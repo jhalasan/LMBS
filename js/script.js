@@ -1,80 +1,5 @@
-// Sidebar Toggle Functions
-function toggleSidebar() {
-  const sidebar = document.getElementById("sidebar");
-  const mainContent = document.querySelector(".main-content");
-  const externalToggleBtn = document.getElementById("externalToggleBtn");
-
-  if (!sidebar || !mainContent || !externalToggleBtn) return;
-
-  // Check the current position of the sidebar using computed style
-  const sidebarLeft = getComputedStyle(sidebar).left;
-
-  if (sidebarLeft === "-250px") {
-    sidebar.style.left = "0"; // Show sidebar
-    mainContent.style.marginLeft = "250px"; // Shift main content to the right
-    externalToggleBtn.style.opacity = "0";
-    externalToggleBtn.style.visibility = "hidden";
-  } else {
-    sidebar.style.left = "-250px"; // Hide sidebar
-    mainContent.style.marginLeft = "0"; // Reset main content margin
-    externalToggleBtn.style.opacity = "1";
-    externalToggleBtn.style.visibility = "visible";
-  }
-}
-
-function toggleSidebarInside() {
-  const sidebar = document.getElementById("sidebar");
-  const mainContent = document.querySelector(".main-content");
-  const externalToggleBtn = document.getElementById("externalToggleBtn");
-
-  if (!sidebar || !mainContent || !externalToggleBtn) return;
-
-  sidebar.style.left = "-250px";
-  mainContent.style.marginLeft = "0";
-  externalToggleBtn.style.opacity = "1";
-  externalToggleBtn.style.visibility = "visible";
-}
-
-// Form submission handling for adding books
-document.getElementById("add-book-form")?.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const bookID = document.getElementById("bookID")?.value.trim();
-  const bookTitle = document.getElementById("bookTitle")?.value.trim();
-  const bookAuthor = document.getElementById("bookAuthor")?.value.trim();
-
-  if (!bookID || !bookTitle || !bookAuthor) {
-    alert("All fields are required!");
-    return;
-  }
-
-  const bookData = { bookID, bookTitle, bookAuthor };
-
-  fetch("../php/addbook.php", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(bookData),
-  })
-    .then((response) => {
-      if (!response.ok) throw new Error("Network response was not ok");
-      return response.json();
-    })
-    .then((data) => {
-      if (data.success) {
-        alert("Book added successfully!");
-        document.getElementById("add-book-form")?.reset();
-      } else {
-        alert(`Error: ${data.message}`);
-      }
-    })
-    .catch((error) => {
-      console.error("Fetch error:", error);
-      alert("Failed to add the book. Please try again.");
-    });
-});
-
 // Fetching and displaying books
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
   const bookList = document.getElementById("bookList");
   const searchInput = document.getElementById("searchInput");
 
@@ -116,7 +41,86 @@ document.addEventListener("DOMContentLoaded", () => {
           <p class="no-results">An error occurred while searching for books. Please try again later.</p>
         `;
       });
-  });
+  }))();
+
+// Sidebar Toggle Functions
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  const mainContent = document.querySelector(".main-content");
+  const externalToggleBtn = document.getElementById("externalToggleBtn");
+
+  if (!sidebar || !mainContent || !externalToggleBtn) return;
+
+  // Check the current position of the sidebar using computed style
+  const sidebarLeft = getComputedStyle(sidebar).left;
+
+  if (sidebarLeft === "-250px") {
+    sidebar.style.left = "0"; // Show sidebar
+    mainContent.style.marginLeft = "250px"; // Shift main content to the right
+    externalToggleBtn.style.opacity = "0";
+    externalToggleBtn.style.visibility = "hidden";
+  } else {
+    sidebar.style.left = "-250px"; // Hide sidebar
+    mainContent.style.marginLeft = "0"; // Reset main content margin
+    externalToggleBtn.style.opacity = "1";
+    externalToggleBtn.style.visibility = "visible";
+  }
+}
+
+function toggleSidebarInside() {
+  const sidebar = document.getElementById("sidebar");
+  const mainContent = document.querySelector(".main-content");
+  const externalToggleBtn = document.getElementById("externalToggleBtn");
+
+  if (!sidebar || !mainContent || !externalToggleBtn) return;
+
+  sidebar.style.left = "-250px";
+  mainContent.style.marginLeft = "0";
+  externalToggleBtn.style.opacity = "1";
+  externalToggleBtn.style.visibility = "visible";
+}
+
+function addBookForm(){
+  // Form submission handling for adding books
+document.getElementById("add-book-form")?.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const bookID = document.getElementById("bookID")?.value.trim();
+  const bookTitle = document.getElementById("bookTitle")?.value.trim();
+  const bookAuthor = document.getElementById("bookAuthor")?.value.trim();
+
+  if (!bookID || !bookTitle || !bookAuthor) {
+    alert("All fields are required!");
+    return;
+  }
+
+  const bookData = { bookID, bookTitle, bookAuthor };
+
+  fetch("../php/addbook.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(bookData),
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Network response was not ok");
+      return response.json();
+    })
+    .then((data) => {
+      if (data.success) {
+        alert("Book added successfully!");
+        document.getElementById("add-book-form")?.reset();
+      } else {
+        alert(`Error: ${data.message}`);
+      }
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+      alert("Failed to add the book. Please try again.");
+    });
+});
+}
+
+
 
   function fetchBooks() {
     fetch("../php/getbooks.php")
