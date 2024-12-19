@@ -1,5 +1,5 @@
 // Fetching and displaying books
-(() => {
+function updateBooks = () => {
   const bookList = document.getElementById("bookList");
   const searchInput = document.getElementById("searchInput");
 
@@ -41,7 +41,9 @@
           <p class="no-results">An error occurred while searching for books. Please try again later.</p>
         `;
       });
-  }))();
+};
+//update books every 1 seconds;
+  setInterval(updateBooks, 1000);
 
 // Sidebar Toggle Functions
 function toggleSidebar() {
