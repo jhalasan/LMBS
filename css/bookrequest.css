@@ -1,0 +1,69 @@
+@import url('style.css');
+
+/* Center the addbook-card container */
+body {
+  display: flex;
+  justify-content: center;  /* Center horizontally */
+  align-items: center;      /* Center vertically */
+  height: 100vh;            /* Full viewport height */
+  margin: 0;                /* Remove default margin */
+  background-color: #121212; /* Dark background for the page */
+}
+
+/* Styling for the request list table */
+#requestList {
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  overflow-x: auto; /* Ensure responsiveness */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #ffffff;
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+thead th {
+  background-color: #323232;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 2px solid #444444;
+}
+
+tbody tr {
+  border-bottom: 1px solid #444444;
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody td {
+  padding: 10px 15px;
+}
+
+tbody tr:hover {
+  background-color: #2a2a2a; /* Highlight row on hover */
+}
+
+
+/* Styling for the title and container */
+h2 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+main {
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+}

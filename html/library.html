@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/library.css">
+  <title>Library Management System</title>
+</head>
+<body>
+  <button class="external-toggle-btn" id="externalToggleBtn" onclick="toggleSidebar()">☰</button>
+
+  <div class="container">
+    <div class="sidebar" id="sidebar">
+      <h2>Library Menu
+        <button class="toggle-btn" id="toggleBtn" onclick="toggleSidebarInside()">☰</button>
+      </h2>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="addbook.html">Add Book</a></li>
+          <li><a href="library.html">Books in Library</a></li>
+          <li><a href="bookrequest.html">Book Request</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="main-content">
+      <header>
+        <h1>ShelfSmart</h1>
+      </header>
+      <main>
+        <section id="libraryBooks" class="card">
+          
+          <div>
+            <input type="text" id="searchInput" placeholder="Search by Book ID, Title, or Author" />
+          </div>
+
+          <div>
+            <label><input type="radio" name="searchOption" value="bookID" checked> Search by Book ID</label>
+            <label><input type="radio" name="searchOption" value="title"> Search by Title</label>
+            <label><input type="radio" name="searchOption" value="author"> Search by Author</label>
+          </div>
+          
+          <h2>Books in the Library</h2>
+          
+          <div id="bookList"></div>
+        </section>        
+      </main>
+      <footer>
+        <p>© 2024 ShelfSmart</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

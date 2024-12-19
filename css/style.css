@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #121212;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* External Toggle Button */
+.external-toggle-btn {
+  background: #333;
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  transition: opacity 0.3s ease, visibility 0s ease 0.3s;
+}
+
+.external-toggle-btn:hover {
+  background: #444;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #1f1f1f;
+  color: #fff;
+  padding: 20px;
+  position: fixed;
+  height: 100vh;
+  left: -250px; /* Hidden initially */
+  top: 0;
+  transition: left 0.3s ease-in-out;
+}
+
+.sidebar h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.sidebar nav ul {
+  list-style: none;
+}
+
+.sidebar nav ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.sidebar nav ul li a:hover {
+  background: #333;
+}
+
+/* Toggle Button Inside Sidebar */
+.toggle-btn {
+  background: #333;
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background: #444;
+}
+/* Main Content */
+.main-content {
+  margin-left: 0;
+  flex-grow: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.main-content.expanded {
+  margin-left: 250px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: white;
+}
+
+/* Welcome Section */
+.welcome-section {
+  text-align: center;
+  margin-top: 40px;
+  padding: 30px;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+}
+
+.welcome-section h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.welcome-section p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cta-btn {
+  padding: 15px 30px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-btn:hover {
+  background-color: #444;
+  transform: translateY(-2px);
+}
+
+.cta-btn:active {
+  transform: translateY(0);
+}
+
+/* Dashboard Section */
+.dashboard {
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.dashboard h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #ffcc00; /* Highlighted card headings */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #777;
+  padding: 10px 0; /* Padding for better spacing */
+  width: 100%;
+}

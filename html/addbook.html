@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/addbook.css">
+  <title>Library Management System</title>
+</head>
+<body>
+  <button class="external-toggle-btn" id="externalToggleBtn" onclick="toggleSidebar()">☰</button>
+
+  <div class="container">
+    <div class="sidebar" id="sidebar">
+      <h2>Library Menu
+        <button class="toggle-btn" id="toggleBtn" onclick="toggleSidebarInside()">☰</button>
+      </h2>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="addbook.html">Add Book</a></li>
+          <li><a href="library.html">Books in Library</a></li>
+          <li><a href="bookrequest.html">Book Request</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="main-content">
+      <header>
+        <h1>ShelfSmart</h1>
+      </header>
+      <main>
+        <section id="addBookSection" class="addbook-card">
+          <h2>Add Book</h2>
+          <form id="add-book-form">
+            <input type="text" id="bookID" placeholder="Book ID" required>
+            <input type="text" id="bookTitle" placeholder="Book Title" required>
+            <input type="text" id="bookAuthor" placeholder="Book Author" required>
+            <button type="submit" class="books-btn">Add Book</button>
+          </form>
+        </section>         
+      </main>
+      <footer>
+        <p>© 2024 ShelfSmart</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

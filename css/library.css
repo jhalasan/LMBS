@@ -1,0 +1,108 @@
+@import url('style.css');
+
+/* Style for the library books card */
+.card {
+  background: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 30px;
+  margin-top: 50px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+/* Ensure bookList fills container */
+#bookList {
+  margin-top: 20px;
+  width: 100%;
+  overflow-x: auto; /* Allow horizontal scroll if needed */
+}
+
+/* Style the table */
+table {
+  width: 100%; /* Make table fill its container */
+  border-collapse: collapse;
+  margin: 0; /* Remove any default margin */
+}
+
+th, td {
+  border: 1px solid #555;
+  padding: 12px; /* Slightly increase padding for better readability */
+  text-align: left;
+}
+
+th {
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+}
+
+td {
+  background-color: #222;
+  color: #fff;
+}
+
+/* Alternate row colors for better readability */
+tr:nth-child(even) td {
+  background-color: #2a2a2a;
+}
+
+/* Ensure table fits viewport width */
+.main-content {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%; /* Prevent any unintentional restrictions */
+  box-sizing: border-box;
+  transition: margin-left 0.3s ease, width 0.3s ease; /* Smooth transition for margin and width */
+}
+
+/* Full-width table container */
+.card {
+  padding: 0; /* Remove padding to allow table to stretch */
+  overflow: hidden;
+}
+
+.card h2 {
+  padding: 20px 30px 0; /* Add top padding for title spacing */
+}
+
+/* Sidebar styles for toggling */
+.sidebar {
+  width: 250px; /* Set a fixed width for sidebar */
+  position: fixed;
+  left: -250px; /* Initially off-screen */
+  transition: left 0.3s ease; /* Smooth transition when sliding in/out */
+}
+
+.sidebar.open {
+  left: 0; /* Sidebar slides in */
+}
+
+/* Style for the toggle button */
+.external-toggle-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  z-index: 999;
+  cursor: pointer;
+}
+
+label {
+  margin-right: 20px;
+  color: #fff;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+}
+

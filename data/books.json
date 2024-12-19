@@ -1,0 +1,167 @@
+{
+    "B001": {
+        "title": "The Enchanted Forest",
+        "author": "Elena Woods",
+        "status": "borrowed"
+    },
+    "B002": {
+        "title": "The Last Guardian",
+        "author": "Cameron Knight",
+        "status": "borrowed"
+    },
+    "B003": {
+        "title": "The Dawn of the Forgotten",
+        "author": "Charlotte Grey",
+        "status": "borrowed"
+    },
+    "B004": {
+        "title": "The Shattered Crown",
+        "author": "Graham West",
+        "status": "borrowed"
+    },
+    "B005": {
+        "title": "The Alchemist's Code",
+        "author": "Sophie Greer",
+        "status": "borrowed"
+    },
+    "B006": {
+        "title": "Journey to the Abyss",
+        "author": "Nathaniel Torres",
+        "status": "borrowed"
+    },
+    "B007": {
+        "title": "Legacy of the Phoenix",
+        "author": "Isabella Frost",
+        "status": "available"
+    },
+    "B008": {
+        "title": "The Clockmaker's Paradox",
+        "author": "Henry Caldwell",
+        "status": "available"
+    },
+    "B009": {
+        "title": "A Symphony of Shadows",
+        "author": "Clara DeVoe",
+        "status": "available"
+    },
+    "B010": {
+        "title": "Echoes from the Ancients",
+        "author": "Victor Ramos",
+        "status": "available"
+    },
+    "B011": {
+        "title": "Secrets of the Forgotten Temple",
+        "author": "Charlotte Hayes",
+        "status": "available"
+    },
+    "B012": {
+        "title": "The Labyrinth's Keeper",
+        "author": "Oliver Grant",
+        "status": "available"
+    },
+    "B013": {
+        "title": "Rise of the Crimson Tide",
+        "author": "Amelia Rivers",
+        "status": "available"
+    },
+    "B014": {
+        "title": "The Oracle's Gambit",
+        "author": "Liam Saunders",
+        "status": "available"
+    },
+    "B015": {
+        "title": "Fables of the Moonlit Sea",
+        "author": "Mia Tennyson",
+        "status": "available"
+    },
+    "B016": {
+        "title": "The Wanderer's Compass",
+        "author": "Elijah Barrett",
+        "status": "available"
+    },
+    "B017": {
+        "title": "Tales of the Infinite Cavern",
+        "author": "Sophia Lang",
+        "status": "available"
+    },
+    "B018": {
+        "title": "The Serpent's Whisper",
+        "author": "David Kingsley",
+        "status": "available"
+    },
+    "B019": {
+        "title": "The Veil of Midnight",
+        "author": "Hannah Clarkson",
+        "status": "available"
+    },
+    "B020": {
+        "title": "The Architect's Dream",
+        "author": "Alexander Reed",
+        "status": "available"
+    },
+    "B021": {
+        "title": "JavaScript: The Good Parts",
+        "author": "Douglas Crockford",
+        "status": "available"
+    },
+    "B022": {
+        "title": "Clean Code",
+        "author": "Robert C. Martin",
+        "status": "available"
+    },
+    "B023": {
+        "title": "The Great Wave",
+        "author": "Robert Williams",
+        "status": "available"
+    },
+    "B024": {
+        "title": "This is a Pineapple",
+        "author": "Mark Rebert",
+        "status": "available"
+    },
+    "B025": {
+        "title": "Harry Potter",
+        "author": "J. K. Rowling",
+        "status": "available"
+    },
+    "B026": {
+        "title": "Programming 101",
+        "author": "Lewis Serturk",
+        "status": "available"
+    },
+    "B027": {
+        "title": "Wuthering Waves",
+        "author": "Thomas Lerbmon",
+        "status": "available"
+    },
+    "B028": {
+        "title": "I Know Why The Caged Bird Sings",
+        "author": "Maya Angelou",
+        "status": "available"
+    },
+    "B029": {
+        "title": "The Secrets of the Silent Moon",
+        "author": "Lydia Winters",
+        "status": "available"
+    },
+    "B030": {
+        "title": "Beneath the Storm's Eye",
+        "author": "Gavin Porter",
+        "status": "available"
+    },
+    "B031": {
+        "title": "Whispers of the Lost City",
+        "author": "Eliza Montgomery",
+        "status": "available"
+    },
+    "B032": {
+        "title": "In the Shadow of Stars",
+        "author": "Lara Quinn",
+        "status": "available"
+    },
+    "B033": {
+        "title": "Jay Bee Algorithm For Dummies",
+        "author": "Mark Renz Gaid",
+        "status": "available"
+    }
+}

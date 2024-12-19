@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/bookrequest.css">
+  <title>Library Management System</title>
+</head>
+<body>
+  <button class="external-toggle-btn" id="externalToggleBtn" onclick="toggleSidebar()">☰</button>
+
+  <div class="container">
+    <div class="sidebar" id="sidebar">
+      <h2>Library Menu
+        <button class="toggle-btn" id="toggleBtn" onclick="toggleSidebarInside()">☰</button>
+      </h2>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="addbook.html">Add Book</a></li>
+          <li><a href="library.html">Books in Library</a></li>
+          <li><a href="bookrequest.html">Book Request</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="main-content">
+      <header>
+        <h1>ShelfSmart</h1>
+      </header>
+      <main>
+        <h2>Confirm Book Requests</h2>
+        <div id="requestList"></div>
+      </main>
+      <footer>
+        <p>© 2024 ShelfSmart</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="../js/script.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const requestList = document.getElementById("requestList");
+
+  // Utility function for fetching data
+  const fetchData = async (url, options = {}) => {
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+      return await response.json();
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      alert("Failed to fetch data. Please try again.");
+      return null;
+    }
+  };
+
+  // Render requests from bookrequests.json
+  const renderRequests = async () => {
+    try {
+      const requests = await fetchData("../data/bookrequests.json");
+      console.log(requests);  // Debug log to check the data
+
+      requestList.innerHTML = ""; // Clear existing content
+
+      if (!requests || requests.length === 0) {
+        requestList.textContent = "No requests in the queue.";
+        return;
+      }
+
+      const table = document.createElement("table");
+      table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Book ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+      `;
+
+      const tbody = document.createElement("tbody");
+
+      requests.forEach((request, index) => {
+        const row = document.createElement("tr");
+
+        // Create Action Button
+        const actionButton = document.createElement("button");
+        actionButton.textContent = request.status === "requested" ? "Confirm" : "Confirmed";
+        actionButton.style.cssText = `
+          background-color: ${request.status === "requested" ? "#4CAF50" : "#2196F3"};
+          color: white;
+          border: none;
+          padding: 5px 10px;
+          cursor: ${request.status === "requested" ? "pointer" : "default"};
+          border-radius: 5px;
+        `;
+        actionButton.disabled = request.status !== "requested";
+
+        if (request.status === "requested") {
+          actionButton.addEventListener("click", () => confirmRequest(index, request));
+        }
+
+        row.innerHTML = `
+          <td>${request.bookID}</td>
+          <td>${request.title}</td>
+          <td>${request.author}</td>
+        `;
+        const actionCell = document.createElement("td");
+        actionCell.appendChild(actionButton);
+        row.appendChild(actionCell);
+
+        tbody.appendChild(row);
+      });
+
+      table.appendChild(tbody);
+      requestList.appendChild(table);
+    } catch (error) {
+      requestList.textContent = "Failed to load requests.";
+      console.error("Error rendering requests:", error);
+    }
+  };
+
+  // Confirm a book request
+  const confirmRequest = async (index, request) => {
+    try {
+      // Step 1: Update book status in library to "borrowed"
+      await updateBookStatus(request.bookID, "borrowed");
+
+      // Step 2: Remove the confirmed request from bookrequests.json
+      const requests = await fetchData("../data/bookrequests.json");
+      if (!requests) return;
+
+      // Remove the confirmed request from the array
+      requests.splice(index, 1);
+
+      // Step 3: Update the bookrequests.json file
+      const updateResponse = await fetch("../php/updateRequestStatus.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ requests })
+      });
+
+      const result = await updateResponse.json();
+
+      if (result.success) {
+        alert(`Book "${request.title}" has been confirmed and borrowed successfully.`);
+        renderRequests(); // Re-render updated requests
+      } else {
+        throw new Error(result.message || "Failed to update requests.");
+      }
+    } catch (error) {
+      console.error("Error confirming request:", error);
+      alert("Failed to confirm the request. Please try again.");
+    }
+  };
+
+  // Update book status in books.json
+  const updateBookStatus = async (bookID, newStatus) => {
+    try {
+      // Fetch the current books list
+      const books = await fetchData("../data/books.json");
+      if (!books || !books[bookID]) {
+        alert("Book not found in the library!");
+        throw new Error(`Book with ID ${bookID} not found.`);
+      }
+
+      // Update the status of the book
+      books[bookID].status = newStatus;
+
+      // Send updated books data to the server
+      const updateResponse = await fetch("../php/updateLibraryStatus.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ books })
+      });
+
+      const result = await updateResponse.json();
+      if (!result.success) {
+        throw new Error(result.message || "Failed to update book status.");
+      }
+
+      console.log(`Book "${books[bookID].title}" status updated to "${newStatus}".`);
+    } catch (error) {
+      console.error("Error updating book status:", error);
+      alert("Failed to update book status. Please try again.");
+      throw error;
+    }
+  };
+
+  // Initial rendering of requests
+  renderRequests();
+});
+
+  </script>
+  
+</body>
+</html>
