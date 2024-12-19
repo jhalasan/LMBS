@@ -108,7 +108,7 @@ if (isset($inputData['action'])) {
     $requests[] = $requestData;
 
     // Step 1: Update the book status to "requested" if not already
-    if (!isset($books[$bookID])) {
+    if (isset($books[$bookID])) {
         // Add the new book with status "requested"
         $books[$bookID] = [
             "title" => $title,

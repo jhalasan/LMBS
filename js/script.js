@@ -1,7 +1,9 @@
 // Fetching and displaying books
-(() => {
+let updateBooks = () => {
   const bookList = document.getElementById("bookList");
   const searchInput = document.getElementById("searchInput");
+
+  console.log('update');
 
   if (!bookList || !searchInput) return;
 
@@ -41,8 +43,8 @@
           <p class="no-results">An error occurred while searching for books. Please try again later.</p>
         `;
       });
-  }))();
-
+});
+}
 // Sidebar Toggle Functions
 function toggleSidebar() {
   const sidebar = document.getElementById("sidebar");
@@ -119,7 +121,6 @@ document.getElementById("add-book-form")?.addEventListener("submit", (e) => {
     });
 });
 }
-
 
 
   function fetchBooks() {
@@ -297,5 +298,5 @@ document.getElementById("add-book-form")?.addEventListener("submit", (e) => {
         console.error("Error adding book request:", error);
         alert("Failed to add book request.");
       });
-  }
-});
+    }
+

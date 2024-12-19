@@ -6,7 +6,9 @@
   <link rel="stylesheet" href="../css/library.css">
   <title>Library Management System</title>
 </head>
-<body>
+<body onload="setInterval(() => { 
+  updateBooks()
+}, 1000);">
   <button class="external-toggle-btn" id="externalToggleBtn" onclick="toggleSidebar()">☰</button>
 
   <div class="container">
